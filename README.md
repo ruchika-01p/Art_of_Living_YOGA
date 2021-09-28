@@ -1,8 +1,8 @@
-# ArtOfLiving_YOGA
+# Art_of_Living_YOGA
 
 
 <p align="center">
-  <img src="https://github.com/ruchika-01p/ArtOfLiving_YOGA/blob/main/src/images/LOGO1.svg" />
+  <img src="https://github.com/ruchika-01p/Art_of_Living_YOGA/blob/main/src/images/LOGO1.svg" />
 </p>
 
 
@@ -29,9 +29,9 @@
 
 We welcome contributions to Art of Living Yoga!
 
-![GitHub contributors](https://img.shields.io/github/contributors/ruchika-01p/ArtOfLiving_YOGA?color=2E61C5&logo=Github&style=for-the-badge)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/ruchika-01p/ArtOfLiving_YOGA?logo=Github&style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/ruchika-01p/ArtOfLiving_YOGA?logo=Github&style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/ruchika-01p/Art_of_Living_YOGA?color=2E61C5&logo=Github&style=for-the-badge)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/ruchika-01p/Art_of_Living_YOGA?logo=Github&style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/ruchika-01p/Art_of_Living_YOGA?logo=Github&style=for-the-badge)
 
 
 - 📥 Pull requests and 🌟 Stars are always welcome.
@@ -46,7 +46,7 @@ We welcome contributions to Art of Living Yoga!
 ---
 
 #### License
-[MIT](https://github.com/ruchika-01p/ArtOfLiving_YOGA/blob/main/LICENSE.md)
+[MIT](https://github.com/ruchika-01p/Art_of_Living_YOGA/blob/main/LICENSE.md)
 
 #### Disclaimer
 _No copyright infringement intended._
