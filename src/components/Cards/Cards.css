@@ -1,0 +1,10 @@
+.root2 {
+    margin-top: 40px !important;
+    max-width: 345px;
+    display: grid;
+    margin-left: 10px;
+  }
+  .media {
+    height: 240px;
+    padding-top: '56.25%'; 
+  }

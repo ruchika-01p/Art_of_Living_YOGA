@@ -1,0 +1,39 @@
+/* .img{
+    background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFpbnQlMjB5b2dhJTIwYmFja2dyb3VuZHN8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60');
+    background-position: 'center';
+    background-size: 'cover';
+    background-repeat: 'no-repeat';
+    width: '500px';
+    height: '100vh';
+
+} */
+/* 
+*/
+.img {
+    /* The image used */
+    background-image: url("https://images8.alphacoders.com/523/thumb-1920-523923.jpg");
+  
+    min-height: 380px;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+  }
+  .container {
+    position: absolute;
+    right: 0;
+    max-width: 300px;
+    padding: 16px;
+    background-color: white;
+  }
+
+@media screen and(max-width:400px){
+  .img{
+    /* width:100px;  */
+    padding: 20px;
+  height: auto;
+  }
+}

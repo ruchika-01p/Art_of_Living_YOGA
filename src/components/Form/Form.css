@@ -1,0 +1,39 @@
+.formyy{
+    min-height: 70vh;
+}
+
+.Sign-up-form {
+     margin-left: 30px;
+     margin-top: 30px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     /* border: 30px; */
+     border-color: rgb(180, 177, 177);
+     border-style: ridge;
+     box-shadow: -1px 2px 20px 5px rgba(0, 0, 0, 0.75);
+}
+
+
+.formed-class {
+    padding: 15px;
+    min-width: 70px;
+    margin: 20px auto !important;
+}
+
+.input-ico-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 80px auto;
+}
+
+.icons {
+    color: black !important;
+}
+
+.oauth-btn {
+    margin-top: 20px;
+    
+}

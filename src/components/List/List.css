@@ -1,0 +1,18 @@
+.list-2{
+    display: flex;
+    flex-direction: column;
+    flex: 0.65;
+}
+
+.imagy{
+    width: 200px;
+}
+.list-1{
+    display: flex;
+    flex-direction: column;
+    flex: 0.35;
+}
+
+.list{
+    display: flex !important;
+}
