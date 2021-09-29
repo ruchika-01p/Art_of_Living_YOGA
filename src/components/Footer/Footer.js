@@ -87,7 +87,7 @@ const Footer = () => {
                   </a>
                   
                 </ul>
-                <h4 style={{color:"black",textAlign:"left"}}>Made by:<br/>Ruchika Pandharikar <br/>Neha Kalbande</h4>
+                
   </div>
           
         </div>
