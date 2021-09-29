@@ -20,38 +20,32 @@ const content = [
     {
         image: Ravikaka,
         text: 'Ravindra Lakhe',
-        para: 'Mechanical Engineer, Entrepreneur and Art of Living Teacher',
-        link:"/about",
+        
     },
     {
         image: Vrunda,
         text: 'Vrunda Lakhe',
-        para: 'Landscape designer, Homemaker and Art of Living Teacher',
-        link:"/about",
+        
     },
     {
         image: Shweta,
         text: 'Shweta Lakhe',
-        para: 'Biomedical Engineer, IIT Madras, Art of Living Teacher, Ministry of Ayush certified Yoga teacher. Click on the link below to see the certificate for the same:',
-        link:"https://drive.google.com/file/d/1BmwmmBHe_roak4H-c5zEHuyA83dSPShS/view?usp=sharing",
+        
     },
     {
         image: Vihal,
         text: 'Vihal Trivedi',
-        para: 'Mechanical Engineer, BITS Pilani, Art of Living Teacher, Ministry of Ayush certified Yoga teacher. Click on the link below to see the certificate for the same:',
-        link:"https://drive.google.com/file/d/1rdpuqSxEMNw-FW0wrcMxnOjiF1richVl/view?usp=sharing",
+        
     },
     {
         image: Rachana,
         text: 'Rachana Lakhe',
-        para: 'MD Pathologist and Art of Living Teacher',
-        link:"/about",
+        
     },
     {
         image: sunil,
         text: 'Sunil Amte',
-        para: 'Mechanical Engineer, Business Consultant and Art of Living Teacher',
-        link:"/about",
+        
     },
 ];
 
@@ -88,16 +82,7 @@ function About() {
                             >
                                 {a.text}
                             </Typography>
-                            <Typography className="hola"
-                                variant='body2'
-                                color='black'
-                                component='p'
-                            >
-                                {a.para}
-                    </Typography>
-                    <a href={a.link} target="_blank">
-                        Click here:
-                    </a>
+                           
                         </CardContent>
                     </CardActionArea>
                     </div>
