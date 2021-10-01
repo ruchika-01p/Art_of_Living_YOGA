@@ -25,6 +25,7 @@ function Header() {
                     
                     
                     <a href='/about'>About Us</a>
+                    <a href='/beginners'>Beginners</a>
                     {/* <a href='/form'>Form</a>
                     <a href='/form1'>Form1</a> */}
 

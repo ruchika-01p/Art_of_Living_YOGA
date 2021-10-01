@@ -11,6 +11,7 @@ import Form1 from "./components/Form/Form1";
 import List from "./components/List/List";
 import Homepage from "./components/Homepage/Homepage";
 import Yoga from "./components/Yoga/Yoga";
+import Beginners from "./components/Beginners/Beginners";
 import Testimonial from "./components/Testimonial/Testimonial";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Route path="/adult" exact component={Adult}/>
       {/* <Route path="/Children" exact component={Children}/> */}
       <Route path="/Yoga" exact component={Yoga}/>
+      <Route path="/Beginners" exact component={Beginners}/>
       
       </Switch>
       <Footer />
