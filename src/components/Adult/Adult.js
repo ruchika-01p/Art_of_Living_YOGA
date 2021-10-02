@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import image1 from '../../images/WITfivicon.png';
 import logo from "../../images/LOGO1.svg";
 import course1 from "../../images/course1.jpeg";
 import course2 from "../../images/course2.jpeg";
