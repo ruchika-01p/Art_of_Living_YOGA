@@ -34,6 +34,15 @@ app.use("/", courseRouter);
 app.use("/adult", cardsRouter);
 app.use("/children", childRouter);
 
+/**
+ * Central Error Handler
+ */
+app.use((err, req, res, next) => {
+  res
+    .status(500)
+    .json(`Error: Internal Server Error:::${err.name ?? "Unknown Error"}`);
+});
+
 app.listen(port, () => {
 	console.log(`Server is running on port: ${port}`);
 });

@@ -3,13 +3,15 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Adult from "./components/Adult/Adult";
-import Children from "./components/Children/Children";
+// import Children from "./components/Children/Children";
 import { Switch } from "react-router";
 import About from "./components/About/About";
 import Form from "./components/Form/Form";
 import Form1 from "./components/Form/Form1";
 import List from "./components/List/List";
 import Homepage from "./components/Homepage/Homepage";
+import Yoga from "./components/Yoga/Yoga";
+import Beginners from "./components/Beginners/Beginners";
 import Testimonial from "./components/Testimonial/Testimonial";
 import AddCourse from './components/Form/AddCourse';
 
@@ -25,7 +27,9 @@ function App() {
       <Route path="/about" exact component={About} />
       <Route path="/adult" exact component={Adult}/>
       <Route path="/addCourse" exact component={AddCourse}/>
-      <Route path="/Children" exact component={Children}/>
+      {/* <Route path="/Children" exact component={Children}/> */}
+      <Route path="/Yoga" exact component={Yoga}/>
+      <Route path="/Beginners" exact component={Beginners}/>
       </Switch>
       <Footer />
     </Router>

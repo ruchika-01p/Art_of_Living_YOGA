@@ -21,8 +21,11 @@ function Header() {
                     <a href='/' className='home'>Home</a>
                   
                     <a href='/adult'>Courses</a>
+                    <a href='/yoga'>Yoga</a>
+                    
                     
                     <a href='/about'>About Us</a>
+                    <a href='/beginners'>Beginners</a>
                     {/* <a href='/form'>Form</a>
                     <a href='/form1'>Form1</a> */}
 
