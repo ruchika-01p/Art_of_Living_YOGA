@@ -20,6 +20,8 @@ function Header() {
                         <Link to='/adult'>Courses</Link>
 
                         <Link to='/about'>About Us</Link>
+                        
+                        <Link to='/beginners'>Beginners</Link>
                     </div>
 
                 </Toolbar>
