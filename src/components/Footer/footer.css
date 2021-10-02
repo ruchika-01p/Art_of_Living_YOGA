@@ -1,161 +1,158 @@
 .cont-div {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
- 
-  }
-
-  .sociall-icons {
-   
-    padding: 3px;
-
-  }
-  
-.f {
-  margin-top: 1rem;
- position: relative;
-  margin-bottom: 0;
-  left: 0;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-  .follow-icon {
-    /* padding: 8px; */
-    color: white;
-    font-size: 25px;
-  }
-  .foot-img-div {
-    margin: 22px auto;
-  }
-  .links-div {
-    /* margin: 50px; */
-    /* padding: 30px; */
-    width:100%;
-    /* margin-left: 10px; */
-    margin-top:50px;
-    
-  }
-  .linkk {
-    color: white;
-  }
+.sociall-icons {
+  padding: 3px;
+}
+
+.f {
+margin-top: 1rem;
+position: relative;
+margin-bottom: 0;
+left: 0;
+width: 100%;
+}
+
+.follow-icon {
+  /* padding: 8px; */
+  color: white;
+  font-size: 25px;
+}
+.foot-img-div {
+  margin: 20px auto;
+}
+.links-div {
+  /* margin: 50px; */
+  /* padding: 30px; */
+  width:100%;
+  /* margin-left: 10px; */
+  margin-top:50px;
   
-  .imgg {
-    width: 200px;
-    height: 200px;
+}
+.linkk {
+  color: white;
+}
+
+.imgg {
+  width: 200px;
+  height: 200px;
+}
+.f-ul {
+  list-style-type: none;
+}
+.re-link {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.re-link:hover {
+  text-decoration: underline;
+}
+
+.f-ul li {
+  margin: 10px auto;
+}
+
+.copy-cont {
+  color: white;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: justify;
+}
+
+a{
+text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+  .cont-div {
+    display: flex;
+    flex-direction: column;
   }
-  .f-ul {
-    list-style-type: none;
-  }
-  .re-link {
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .re-link:hover {
-    text-decoration: underline;
-  }
-  
-  .f-ul li {
-    margin: 10px auto;
-  }
-  
-  .copy-cont {
-    color: white;
-    padding: 10px;
-    margin: 0 auto;
-    margin-top: 50px;
+ 
+.sociall-icons {
+/* position: absolute; */
+/* margin-top: 500px; */
+/* left: 2px !important; */
+/* transform: translate(-50%, -50%); */
+/* z-index: 3; */
+display: grid;
+padding: 3px;
+grid-template-columns: 2fr 1fr;
+}
+.sociall-icons a{
+width: 35px !important;
+height: 40px !important;
+}
+}
+
+@media screen and (max-width: 768px) {
+  .copy-cont p {
     text-align: justify;
   }
+  .imgg{
+    width:100px;
+    height:100px;
+  }
+  .copy-cont, .links-div{
+    margin:4%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+.sociall-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 3px;
+
+}
+.sociall-icons a{
+  width: 20px;
+  height: 15px;
+}
+}
 
 
-  
-  
-  @media screen and (max-width: 500px) {
-    .cont-div {
-      display: flex;
-      flex-direction: column;
-    }
-   
 .sociall-icons {
   /* position: absolute; */
   /* margin-top: 500px; */
-  /* left: 2px !important; */
+  /* left: 67%; */
   /* transform: translate(-50%, -50%); */
   /* z-index: 3; */
-  display: grid;
-  padding: 3px;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
 }
-.sociall-icons a{
-  width: 35px !important;
-  height: 40px !important;
+.sociall-icons a {
+  position: relative;
+  /* display: block; */
+  width: 40px;
+  height: 45px;
+  /* line-height: 50px; */
+  text-align: center;
+  background:lightgrey;
+  font-size: 23px;
+  color: #333;
+  font-weight: bold;
+  margin: 2px 2px;
 }
-  }
-  
-@media screen and (max-width: 768px) {
-    .copy-cont p {
-      text-align: justify;
-    }
-    .imgg{
-      width:100px;
-      height:100px;
-    }
-    .copy-cont{
-      margin:4%;
-    }
-  }
-  
-@media screen and (max-width: 600px) {
 
-  .sociall-icons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 3px;
 
-  }
-  .sociall-icons a{
-    width: 20px;
-    height: 15px;
-  }
+.sociall-icons a:hover {
+  transition: 0.2s;
 }
-  
 
-.sociall-icons {
-    /* position: absolute; */
-    /* margin-top: 500px; */
-    /* left: 67%; */
-    /* transform: translate(-50%, -50%); */
-    /* z-index: 3; */
-    display: flex;
-  }
-  .sociall-icons a {
-    position: relative;
-    /* display: block; */
-    width: 40px;
-    height: 45px;
-    /* line-height: 50px; */
-    text-align: center;
-    background:lightgrey;
-    font-size: 23px;
-    color: #333;
-    font-weight: bold;
-    margin: 2px 2px;
-  }
-  
-  
-  .sociall-icons a:hover {
-    transition: 0.2s;
-  }
-  
-  .sociall-icons a:hover .fab {
-    color: #fff;
-  }
-  
-  .sociall-icons a .fab {
-    transition: 0.8s;
-  }
-  
-  .sociall-icons a .fab:hover {
-    transform: rotateY(360deg);
-    color: #fff;
-  }
+.sociall-icons a:hover .fab {
+  color: #fff;
+}
+
+.sociall-icons a .fab {
+  transition: 0.8s;
+}
+
+.sociall-icons a .fab:hover {
+  transform: rotateY(360deg);
+  color: #fff;
+}
