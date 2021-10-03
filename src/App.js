@@ -13,6 +13,7 @@ import Homepage from "./components/Homepage/Homepage";
 import Yoga from "./components/Yoga/Yoga";
 import Beginners from "./components/Beginners/Beginners";
 import Testimonial from "./components/Testimonial/Testimonial";
+import AddCourse from './components/Form/AddCourse';
 
 function App() {
   return (
@@ -25,10 +26,10 @@ function App() {
       <Route path="/list" exact component={List} />
       <Route path="/about" exact component={About} />
       <Route path="/adult" exact component={Adult}/>
+      <Route path="/addCourse" exact component={AddCourse}/>
       {/* <Route path="/Children" exact component={Children}/> */}
       <Route path="/Yoga" exact component={Yoga}/>
       <Route path="/Beginners" exact component={Beginners}/>
-      
       </Switch>
       <Footer />
     </Router>

@@ -10,8 +10,10 @@ node_modules
 
 # production
 /build
+uploads
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local
