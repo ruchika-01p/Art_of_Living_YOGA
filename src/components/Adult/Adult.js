@@ -70,7 +70,6 @@ function Adult() {
 			const children = res.data.courses.filter((el) => el.category !== "adult");
 			console.log(adult, children);
 
-			if (adult && adult.length > 0) {
 				adult.forEach((item) => {
 					content.push({
 						image: `http://localhost:5000/${item.poster.path}`,
@@ -88,8 +87,6 @@ function Adult() {
 					console.log(item);
 				});
 				setAdultCourse(content);
-			}
-			if (children && children.length > 0) {
 				children.forEach((item) => {
 					content1.push({
 						image: `http://localhost:5000/${item.poster.path}`,
@@ -107,7 +104,6 @@ function Adult() {
 					console.log(item);
 				});
 				setChildCourse(content1);
-			}
 		});
 	}, []);
 
@@ -122,7 +118,7 @@ function Adult() {
 					<div className="cards-wrapper">
 						<div className="card2">
 							<CardActionArea>
-								<CardMedia className="media" image={a.image} />
+								<CardMedia component="img" className="media" image={a.image} />
 								<CardContent>
 									<Typography gutterBottom variant="h7" component="h2">
 										{a.text}
