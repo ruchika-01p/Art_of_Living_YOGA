@@ -153,7 +153,7 @@ function Adult() {
 					<div className="cards-wrapper">
 						<div className="card2">
 							<CardActionArea>
-								<CardMedia className="media" image={a.image} />
+								<CardMedia component="img" className="media" image={a.image} />
 								<CardContent>
 									<Typography gutterBottom variant="h7" component="h2">
 										{a.text}
