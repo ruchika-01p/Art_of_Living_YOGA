@@ -1,7 +1,8 @@
 import './App.css';
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+
 import Adult from "./components/Adult/Adult";
 // import Children from "./components/Children/Children";
 import { Switch } from "react-router";
@@ -14,6 +15,7 @@ import Yoga from "./components/Yoga/Yoga";
 import Beginners from "./components/Beginners/Beginners";
 import Testimonial from "./components/Testimonial/Testimonial";
 import AddCourse from './components/Form/AddCourse';
+
 
 function App() {
   return (
