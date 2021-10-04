@@ -14,6 +14,7 @@ import Yoga from "./components/Yoga/Yoga";
 import Beginners from "./components/Beginners/Beginners";
 import Testimonial from "./components/Testimonial/Testimonial";
 import AddCourse from './components/Form/AddCourse';
+import Admin from './components/Admin/Admin';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       {/* <Route path="/Children" exact component={Children}/> */}
       <Route path="/Yoga" exact component={Yoga}/>
       <Route path="/Beginners" exact component={Beginners}/>
+      <Route path="/admin" exact component={Admin}/>
       </Switch>
       <Footer />
     </Router>
