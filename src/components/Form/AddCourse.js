@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "date-fns";
 import {
 	Grid,
@@ -13,6 +13,8 @@ import {
 	IconButton,
 	makeStyles,
 	Divider,
+	Box,
+	CircularProgress,
 } from "@material-ui/core";
 import DateFnsUtilsUtisl from "@date-io/date-fns";
 import {
@@ -25,42 +27,73 @@ import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import Axios from "axios";
 import addCourseStyle from "./addCourseStyle";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => addCourseStyle(theme));
 
-const AddCourse = () => {
-	const [courseName, setCourseName] = useState("");
-	const [requirements, setRequirements] = useState("");
-	const [description, setDescription] = useState("");
-	const [link, setLink] = useState("");
-	const [dateFrom, setDateFrom] = useState(new Date());
-	const [dateTo, setDateTo] = useState(new Date());
-	const [timeFrom, setTimeFrom] = useState(new Date());
-	const [timeTo, setTimeTo] = useState(new Date());
-	const [category, setCategory] = useState("");
-	const [poster, setPoster] = useState(null);
-
+const AddCourse = (props) => {
 	const classes = useStyles();
+	const location = useLocation();
+	const [update, setUpdate] = useState(false);
+	const [loading, setLoading] = useState(true);
+	const [course, setCourse] = useState({
+		courseName: "",
+		requirements: "",
+		description: "",
+		link: "",
+		dateFrom: new Date(),
+		dateTo: new Date(),
+		timeFrom: new Date(),
+		timeTo: new Date(),
+		category: "",
+		poster: "",
+	});
+
+	useEffect(() => {
+		const id = location.pathname.split("/")[2];
+		if (id && loading) {
+			Axios.get(`http://localhost:5000/courses/${id}`, {
+				headers: { "x-auth-token": localStorage.getItem("user") },
+			})
+				.then((res) => {
+					if (res.data.success) {
+						setCourse(state => ({
+							...state,
+							courseName: res.data?.course?.courseName,
+							requirements: res.data?.course?.requirements,
+							description: res.data?.course?.description,
+							category: res.data?.course?.category,
+							link: res.data?.course?.link,
+							dateFrom: res.data?.course?.dateFrom,
+							dateTo: res.data?.course?.dateTo,
+							timeFrom: res.data?.course?.timeFrom,
+							timeTo: res.data?.course?.timeTo,
+							poster: res.data?.course?.poster,
+						}));
+						setLoading(false)
+						setUpdate(true);
+					}
+				})
+				.catch((err) => {
+					console.log(err)
+				});
+		}
+	}, [loading, course, location.pathname]);
 
 	const handleSubmit = async (e) => {
+		console.log(course.poster);
 		e.preventDefault();
 		const formData = new FormData();
-		formData.append("poster", poster);
-		const courseDetails = {
-			courseName,
-			requirements,
-			description,
-			link,
-			dateFrom,
-			dateTo,
-			timeFrom,
-			timeTo,
-			category,
-		};
-		for (var key in courseDetails) {
-			formData.append(key, courseDetails[key]);
+		formData.append("poster", course.poster);
+		for (var key in course) {
+			if (key !== "poster") formData.append(key, course[key]);
 		}
-		Axios.post("http://localhost:5000/admin/addCourse", formData, {
+		const id = location.pathname.split("/")[2];
+		const url = update
+			? `http://localhost:5000/courses/${id}`
+			: "http://localhost:5000/admin/addCourse";
+
+		Axios.post(url, formData, {
 			headers: {
 				"x-auth-token": localStorage.getItem("user"),
 			},
@@ -70,7 +103,7 @@ const AddCourse = () => {
 				Swal.fire({
 					title: "Course added successfully",
 					text: "Do you want to add more courses?",
-					icon: 'success',
+					icon: "success",
 					showDenyButton: true,
 					showCancelButton: true,
 					confirmButtonText: "Yes",
@@ -101,21 +134,24 @@ const AddCourse = () => {
 	};
 
 	const clear = () => {
-		setCourseName("");
-		setRequirements("");
-		setDescription("");
-		setLink("");
-		setDateFrom(new Date());
-		setDateTo(new Date());
-		setTimeFrom(new Date());
-		setTimeTo(new Date());
-		setCategory(new Date());
-		setPoster(null);
+		setCourse((course) => ({
+			...course,
+			courseName: "",
+			requirements: "",
+			description: "",
+			link: "",
+			dateFrom: new Date(),
+			dateTo: new Date(),
+			timeFrom: new Date(),
+			timeTo: new Date(),
+			category: "",
+			poster: null,
+		}));
 	};
 
 	return (
 		<div className={classes.container}>
-			<Grid component="main" md={6} sm={8} xs={12}>
+				<Grid item component="main" md={6} sm={8} xs={12}>
 				<Paper
 					component="form"
 					onSubmit={(e) => handleSubmit(e)}
@@ -132,50 +168,58 @@ const AddCourse = () => {
 						<Grid item xs={12}>
 							<TextField
 								required
+								InputLabelProps={{ shrink: true }}
 								id="programName"
 								name="programName"
 								label="Name of Program/Course"
 								fullWidth
 								variant="outlined"
-								value={courseName}
-								onChange={(e) => setCourseName(e.target.value)}
+								value={course.courseName}
+								onChange={(e) => setCourse({...course, courseName: e.target.value})}
 							/>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
 								required
+								InputLabelProps={{ shrink: true }}
 								id="requirements"
 								name="requirements"
 								label="Requirements"
 								fullWidth
 								variant="outlined"
-								value={requirements}
-								onChange={(e) => setRequirements(e.target.value)}
+								value={course.requirements}
+								onChange={(e) =>
+									setCourse({ ...course, requirements: e.target.value })
+								}
 							/>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
 								required
+								InputLabelProps={{ shrink: true }}
 								multiline
 								id="description"
 								name="description"
 								label="Description"
 								fullWidth
 								variant="outlined"
-								value={description}
-								onChange={(e) => setDescription(e.target.value)}
+								value={course.description}
+								onChange={(e) =>
+									setCourse({ ...course, description: e.target.value })
+								}
 							/>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
 								id="link"
 								required
+								InputLabelProps={{ shrink: true }}
 								name="Link"
 								label="Registration Link"
 								fullWidth
 								variant="outlined"
-								value={link}
-								onChange={(e) => setLink(e.target.value)}
+								value={course.link}
+								onChange={(e) => setCourse({ ...course, link: e.target.value })}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -189,8 +233,10 @@ const AddCourse = () => {
 											margin="normal"
 											id="date-picker1"
 											label="From"
-											value={dateFrom}
-											onChange={(date) => setDateFrom(date)}
+											value={course.dateFrom}
+											onChange={(dateFrom) =>
+												setCourse({ ...course, dateFrom })
+											}
 											KeyboardButtonProps={{
 												"aria-label": "change date",
 											}}
@@ -203,8 +249,10 @@ const AddCourse = () => {
 											margin="normal"
 											id="date-picker2"
 											label="To"
-											value={dateTo}
-											onChange={(date) => setDateTo(date)}
+											value={course.dateTo}
+											onChange={(dateTo) =>
+												setCourse({ ...course, dateTo })
+											}
 											KeyboardButtonProps={{
 												"aria-label": "change date",
 											}}
@@ -223,8 +271,10 @@ const AddCourse = () => {
 											margin="normal"
 											id="time-picker2"
 											label="From"
-											value={timeFrom}
-											onChange={(time) => setTimeFrom(time)}
+											value={course.timeFrom}
+											onChange={(timeFrom) =>
+												setCourse({ ...course, timeFrom })
+											}
 											KeyboardButtonProps={{
 												"aria-label": "change time",
 											}}
@@ -236,8 +286,10 @@ const AddCourse = () => {
 											margin="normal"
 											id="time-picker2"
 											label="To"
-											value={timeTo}
-											onChange={(time) => setTimeTo(time)}
+											value={course.timeTo}
+											onChange={(timeTo) =>
+												setCourse({ ...course, timeTo })
+											}
 											KeyboardButtonProps={{
 												"aria-label": "change time",
 											}}
@@ -254,7 +306,9 @@ const AddCourse = () => {
 										<RadioGroup
 											row
 											aria-label="position"
-											onChange={(e) => setCategory(e.target.value)}
+											onChange={(e) =>
+												setCourse({ ...course, category: e.target.value })
+											}
 											name="position"
 											justify="space-around"
 											defaultValue="top">
@@ -282,7 +336,9 @@ const AddCourse = () => {
 											className={classes.input}
 											id="poster"
 											type="file"
-											onChange={(e) => setPoster(e.target.files[0])}
+											onChange={(e) =>
+												setCourse({ ...course, poster: e.target.files[0] })
+											}
 										/>
 										<label htmlFor="poster">
 											<IconButton
@@ -294,8 +350,10 @@ const AddCourse = () => {
 										</label>
 									</Grid>
 									<Grid>
-										{poster &&
-											`${poster.name} (${(poster.size / 1000).toFixed(2)} KB)`}
+										{course.poster &&
+											`${course.poster.name} (${(
+												course.poster.size / 1000
+											).toFixed(2)} KB)`}
 									</Grid>
 								</Grid>
 							</Grid>
@@ -326,7 +384,7 @@ const AddCourse = () => {
 								variant="contained"
 								fullWidth
 								type="submit">
-								Submit
+								{update ? "Update" : "Submit"}
 							</Button>
 						</Grid>
 					</Grid>

@@ -28,6 +28,7 @@ function App() {
       <Route path="/about" exact component={About} />
       <Route path="/adult" exact component={Adult}/>
       <Route path="/addCourse" exact component={AddCourse}/>
+      <Route path="/addCourse/:id" exact component={AddCourse}/>
       {/* <Route path="/Children" exact component={Children}/> */}
       <Route path="/Yoga" exact component={Yoga}/>
       <Route path="/Beginners" exact component={Beginners}/>

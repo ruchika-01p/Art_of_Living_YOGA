@@ -158,4 +158,71 @@ router.delete("/courses/:id", isAuth, (req, res) => {
 		);
 });
 
+router.post("/courses/:id", isAuth, (req, res) => {
+	const id = mongoose.Types.ObjectId(req.params.id);
+	Course.findById(id).then((course) => {
+		if (!course)
+			return res
+				.status(404)
+				.status({ success: false, message: "Course not found" });
+
+		fs.unlink("./uploads/" + course.poster.name, (err) => {
+			if (err)
+				return res.status(500).json({ scucces: false, message: err.message });
+
+			upload(req, res, (err) => {
+				if (err || err instanceof multer.MulterError)
+					return res.status(500).json({ success: false, message: err.message });
+
+				const poster = req.file;
+				const courseDetails = req.body;
+				Course.updateOne(
+					{ _id: id },
+					{
+						$set: {
+							courseName: courseDetails.courseName,
+							description: courseDetails.description,
+							category: courseDetails.category,
+							requirements: courseDetails.requirements,
+							link: courseDetails.link,
+							dateFrom: courseDetails.dateFrom,
+							dateTo: courseDetails.dateTo,
+							timeFrom: courseDetails.timeFrom,
+							timeTo: courseDetails.timeTo,
+							poster: {
+								name: poster.filename,
+								path: poster.path,
+								size: poster.size.toString(),
+							},
+						},
+					}
+				)
+					.then(() =>
+						res
+							.status(200)
+							.json({ success: true, message: "Course updated succesfully!" })
+					)
+					.catch((err) =>
+						res.status(400).json({ success: false, message: err.message })
+					);
+			});
+		});
+	});
+});
+
+router.get("/courses/:id", isAuth, (req, res) => {
+	const id = mongoose.Types.ObjectId(req.params.id);
+	Course.findById(id)
+		.then((course) => {
+			if (!course)
+				return res
+					.status(404)
+					.json({ success: false, message: "Course not found" });
+			return res.status(200).json({ success: true, course });
+		})
+		.catch((err) =>
+			res.status(400).json({ success: false, message: err.message })
+		);
+});
+
 module.exports = router;

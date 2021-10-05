@@ -195,7 +195,7 @@ function Adult() {
 											image={a.image}
 										/>
 										<CardContent>
-											<Typography gutterBottom variant="h7" component="h2">
+											<Typography gutterBottom variant="h6" component="h2">
 												{a.text}
 											</Typography>
 											<Typography
@@ -205,7 +205,7 @@ function Adult() {
 												component="p">
 												{a.para}
 											</Typography>
-											<Typography gutterBottom variant="h7" component="h3">
+											<Typography gutterBottom variant="h6" component="h3">
 												{a.para1}
 											</Typography>
 											<a href={a.link} target="_blank">
@@ -231,7 +231,9 @@ function Adult() {
 														variant="contained"
 														color="primary"
 														style={{ margin: "4px" }}
-														startIcon={<EditIcon />}>
+														startIcon={<EditIcon />}
+														href={`/addCourse/${a.id}`}
+														>
 														Edit
 													</Button>
 												</div>
@@ -294,6 +296,7 @@ function Adult() {
 														variant="contained"
 														color="primary"
 														style={{ margin: "4px" }}
+														href={`/addCourse/${a.id}`}
 														startIcon={<EditIcon />}>
 														Edit
 													</Button>
