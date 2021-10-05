@@ -31,7 +31,7 @@ function App() {
       {/* <Route path="/Children" exact component={Children}/> */}
       <Route path="/Yoga" exact component={Yoga}/>
       <Route path="/Beginners" exact component={Beginners}/>
-      <Route path="/admin" exact component={Admin}/>
+      <Route path="/admin" exact component={Admin} />
       </Switch>
       <Footer />
     </Router>

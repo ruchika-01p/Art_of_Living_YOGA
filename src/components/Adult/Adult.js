@@ -62,6 +62,7 @@ const content1 = [
 function Adult() {
 	const [adultCourse, setAdultCourse] = useState([]);
 	const [childCourse, setChildCourse] = useState([]);
+	const [auth, setAuth] = useState(false);
 
 	useEffect(() => {
 		Axios.get("http://localhost:5000/courses").then((res) => {
@@ -70,41 +71,54 @@ function Adult() {
 			const children = res.data.courses.filter((el) => el.category !== "adult");
 			console.log(adult, children);
 
-				adult.forEach((item) => {
-					content.push({
-						image: `http://localhost:5000/${item.poster.path}`,
-						text: item.courseName,
-						para: item.description,
-						para1: `${new Date(
-							item.dateFrom
-						).toDateString()} - ${new Date(
-							item.dateTo
-						).toDateString()} | ${new Date(
-							item.timeFrom
-						).toLocaleTimeString()} - ${new Date(item.timeTo).toLocaleTimeString()}`,
-						link: item.link,
-					});
-					console.log(item);
+			adult.forEach((item) => {
+				content.push({
+					image: `http://localhost:5000/${item.poster.path}`,
+					text: item.courseName,
+					para: item.description,
+					para1: `${new Date(item.dateFrom).toDateString()} - ${new Date(
+						item.dateTo
+					).toDateString()} | ${new Date(
+						item.timeFrom
+					).toLocaleTimeString()} - ${new Date(
+						item.timeTo
+					).toLocaleTimeString()}`,
+					link: item.link,
 				});
-				setAdultCourse(content);
-				children.forEach((item) => {
-					content1.push({
-						image: `http://localhost:5000/${item.poster.path}`,
-						text: item.courseName,
-						para: item.description,
-						para1: `${new Date(
-							item.dateFrom
-						).toDateString()} - ${new Date(
-							item.dateTo
-						).toDateString()} \n ${new Date(
-							item.timeFrom
-						).toLocaleTimeString()} - ${new Date(item.timeTo).toLocaleTimeString()}`,
-						link: item.link,
-					});
-					console.log(item);
+				console.log(item);
+			});
+			setAdultCourse(content);
+			children.forEach((item) => {
+				content1.push({
+					image: `http://localhost:5000/${item.poster.path}`,
+					text: item.courseName,
+					para: item.description,
+					para1: `${new Date(item.dateFrom).toDateString()} - ${new Date(
+						item.dateTo
+					).toDateString()} \n ${new Date(
+						item.timeFrom
+					).toLocaleTimeString()} - ${new Date(
+						item.timeTo
+					).toLocaleTimeString()}`,
+					link: item.link,
 				});
-				setChildCourse(content1);
+				console.log(item);
+			});
+			setChildCourse(content1);
 		});
+	}, []);
+
+	useEffect(() => {
+		const token = localStorage.getItem("user");
+		if (token) {
+			Axios.get("http://localhost:5000/admin/authCheck", {
+				headers: {
+					"x-auth-token": token,
+				},
+			})
+				.then((res) => setAuth(res.data.success))
+				.catch((err) => setAuth(false));
+		}
 	}, []);
 
 	return (
@@ -179,17 +193,19 @@ function Adult() {
 					</div>
 				))}
 			</div>
-			<Grid container justify="center" xs={12}>
-				<Grid item sm={3} xs={10}>
-					<Button
-						color="primary"
-						variant="contained"
-						fullWidth
-						href="/addCourse">
-						Add new course
-					</Button>
+			{auth && (
+				<Grid container justify="center">
+					<Grid item sm={3} xs={10}>
+						<Button
+							color="primary"
+							variant="contained"
+							fullWidth
+							href="/addCourse">
+							Add new course
+						</Button>
+					</Grid>
 				</Grid>
-			</Grid>
+			)}
 		</div>
 	);
 }

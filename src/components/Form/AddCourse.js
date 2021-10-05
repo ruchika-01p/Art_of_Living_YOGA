@@ -23,7 +23,8 @@ import {
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
 import Axios from "axios";
-import addCourseStyle from './addCourseStyle';
+import addCourseStyle from "./addCourseStyle";
+import Swal from "sweetalert2";
 
 const useStyles = makeStyles((theme) => addCourseStyle(theme));
 
@@ -59,12 +60,24 @@ const AddCourse = () => {
 		for (var key in courseDetails) {
 			formData.append(key, courseDetails[key]);
 		}
-		Axios.post("http://localhost:5000/admin/addCourse", formData)
+		Axios.post("http://localhost:5000/admin/addCourse", formData, {
+			headers: {
+				"x-auth-token": localStorage.getItem("user"),
+			},
+		})
 			.then((res) => {
 				console.log(res.data);
+				Swal.fire("Good job!", "Course succesfully added", "success");
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log(err.message);
+				if (err.response) {
+					Swal.fire("Log In Failed", err.response?.data?.message, "error");
+				} else if (err.request) {
+					Swal.fire("Log In Failed", "Internal Server Error", "error");
+				} else {
+					Swal.fire("Log In Failed", "Something went wrong", "error");
+				}
 			});
 		clear();
 		window.location = "/adult";
@@ -219,7 +232,7 @@ const AddCourse = () => {
 						<Grid item xs={12}>
 							<Grid container justify="space-between" spacing={5}>
 								<Grid item sm={5} xs={12}>
-									<Grid container xs={12} alignItems="center">
+									<Grid container alignItems="center">
 										<FormLabel component="legend">Select Category * </FormLabel>
 										<RadioGroup
 											row
@@ -244,7 +257,7 @@ const AddCourse = () => {
 									</Grid>
 								</Grid>
 								<Grid item sm={5} xs={12}>
-									<Grid container xs={12} alignItems="center">
+									<Grid container alignItems="center">
 										<FormLabel component="legend">Choose Poster: </FormLabel>
 										<input
 											required
