@@ -67,20 +67,37 @@ const AddCourse = () => {
 		})
 			.then((res) => {
 				console.log(res.data);
-				Swal.fire("Good job!", "Course succesfully added", "success");
+				Swal.fire({
+					title: "Course added successfully",
+					text: "Do you want to add more courses?",
+					icon: 'success',
+					showDenyButton: true,
+					showCancelButton: true,
+					confirmButtonText: "Yes",
+					denyButtonText: "No",
+				}).then((result) => {
+					if (result.isDenied) {
+						clear();
+						window.location = "/adult";
+					}
+				});
 			})
 			.catch((err) => {
 				console.log(err.message);
 				if (err.response) {
-					Swal.fire("Log In Failed", err.response?.data?.message, "error");
-				} else if (err.request) {
-					Swal.fire("Log In Failed", "Internal Server Error", "error");
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: err.response.message || "Something went wrong",
+					});
 				} else {
-					Swal.fire("Log In Failed", "Something went wrong", "error");
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Something went wrong",
+					});
 				}
 			});
-		clear();
-		window.location = "/adult";
 	};
 
 	const clear = () => {

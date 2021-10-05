@@ -59,7 +59,8 @@ const Admin = () => {
 
 	useEffect(() => {
 		const token = localStorage.getItem("user");
-		if (token) {
+		if(!token) setAuth(false)
+		else {
 			Axios.get("http://localhost:5000/admin/authCheck", {
 				headers: {
 					"x-auth-token": token,

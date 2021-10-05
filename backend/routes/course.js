@@ -6,6 +6,8 @@ const upload = require("../middlewares/upload");
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+const fs = require("fs");
 
 //Create an admin
 // router.post("/admin/register", (req, res) => {
@@ -124,6 +126,36 @@ router.get("/courses", (req, res) => {
 	Course.find({})
 		.then((courses) => res.status(200).json({ success: true, courses }))
 		.catch((err) => res.status(400).json({ success: false, message: err }));
+});
+
+router.delete("/courses/:id", isAuth, (req, res) => {
+	const id = mongoose.Types.ObjectId(req.params.id);
+	console.log(id);
+	Course.findById(id)
+		.then((course) => {
+			if (!course)
+				return res
+					.status(400)
+					.json({ success: false, message: "Course not found" });
+
+			fs.unlink("./uploads/" + course.poster.name, (err) => {
+				if (err)
+					return res.status(500).json({ scucces: false, message: err.message });
+				course
+					.deleteOne({ _id: id })
+					.then((result) =>
+						res
+							.status(200)
+							.json({ success: true, message: "Course deleted succesfully!" })
+					)
+					.catch((err) =>
+						res.status(400).json({ success: false, message: err.message })
+					);
+			});
+		})
+		.catch((err) =>
+			res.status(400).json({ success: false, message: err.message })
+		);
 });
 
 module.exports = router;
