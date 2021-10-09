@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+
 .navbar {
   background: lightgrey;
   height: 80px;
@@ -19,6 +22,10 @@
 }
 .logo{
   width:90px;
+}
+.logo-txt{
+  font-family: 'Noto Sans Display', sans-serif;
+  font-size:30px
 }
 .navbar-logo {
   color: #fff;
@@ -42,7 +49,7 @@
   grid-gap: 10px;
   list-style: none;
   text-align: center;
-  width: 90vw;
+  width: 75vw;
   justify-content: end;
   margin-right: 2rem;
 }
@@ -84,7 +91,9 @@
   .NavbarItems {
     position: relative;
   }
-
+  .logo-txt{
+    display: none;
+  }
   .nav-menu {
     display: flex;
     flex-direction: column;
