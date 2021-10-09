@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
+import Navbar from './components/Header/Navbar';
 import Footer from './components/Footer/Footer';
 
 import Adult from "./components/Adult/Adult";
@@ -21,7 +21,7 @@ import Admin from './components/Admin/Admin';
 function App() {
   return (
     <Router>
-      <Header />
+      <Navbar />
       <Switch>
       <Route path="/" exact component={Homepage} />
       <Route path="/form" exact component={Form} />
