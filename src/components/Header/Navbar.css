@@ -42,7 +42,7 @@
   grid-gap: 10px;
   list-style: none;
   text-align: center;
-  width: 60vw;
+  width: 90vw;
   justify-content: end;
   margin-right: 2rem;
 }
@@ -111,6 +111,7 @@
     padding: 2rem;
     width: 100%;
     display: table;
+    color: #fff;
   }
 
   .nav-links:hover {
@@ -133,13 +134,13 @@
   .menu-icon {
     display: block;
     position: absolute;
-    top: 0;
+    top: 0px;
     right: 0;
     transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    font-size: 35px;
     cursor: pointer;
     width: 40px;
-    height: 30px;
+    height: 33px;
   }
 
   .fa-times {
