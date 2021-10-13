@@ -10,9 +10,9 @@
 This website aims at providing people the details of all the programs along with the registration form link on a single platform.
 </div>
 
+---
 
 **We are currently working on making a website for the repository. Go through the documentation, issues and [Contributing](#Contributing) to learn more about how you can contribute!**
-
 
 
 ---
