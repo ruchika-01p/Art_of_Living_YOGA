@@ -24,7 +24,6 @@ function Homepage(){
         </form>
         
       </div>
-      <br/>  <h2><center>Testimonials</center></h2> <br/> 
     <div> <Testimonials/></div>
     </div>
   );
